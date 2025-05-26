@@ -1,0 +1,9 @@
+streamlit
+pandas
+geopandas
+numpy
+datetime
+folium
+folium.features
+streamlit_folium
+sklearn.preprocessing
