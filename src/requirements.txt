@@ -2,7 +2,6 @@ streamlit
 pandas
 geopandas
 numpy
-datetime
 folium
 streamlit_folium
 sklearn
