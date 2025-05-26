@@ -17,7 +17,7 @@ import numpy as np
 # Reference use for implementation: https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state
 
 if 'node_data' not in st.session_state:
-    date_range = pd.read_csv('./streamlit_nodes.csv', low_memory=False)
+    date_range = pd.read_csv('../data/streamlit_nodes.csv', low_memory=False)
     st.session_state['node_data'] = date_range
 
 if 'date_year' not in st.session_state:
@@ -116,18 +116,18 @@ highway_select = st.selectbox(
 st.session_state['highway_filter'] = highway_select
 
 # Reference for spacing: https://discuss.streamlit.io/t/create-empty-space-to-separate-portions-of-the-app/8689/2
-st.markdown('##')
+st.markdown('####')
 
 # Reference https://docs.streamlit.io/develop/api-reference/widgets/st.toggle
-event_set = st.toggle("Apply Event Filtering")
+# event_set = st.toggle("Apply Event Filtering")
 
-if event_set:
-    st.session_state.event_filter = False
-else:
-    st.session_state.event_filter = True
+# if event_set:
+#     st.session_state.event_filter = False
+# else:
+#     st.session_state.event_filter = True
 
-if event_set:
-    pass
+# if event_set:
+#     pass
 
 events_data = { 
     "New Years Day" : { "day": 1, "month": 1, "year": 2024 },
@@ -150,43 +150,43 @@ events_data = {
 }
 
 # Reference https://docs.streamlit.io/develop/api-reference/widgets/st.selectbox
-highway_select = st.selectbox(
-    "Filtered event",
-    [
-        'New Years Day',
-        'Day After New Years Day',
-        'Waitangi',
-        'Good Friday',
-        'Anzac Day',
-        'Kings Official Birthday',
-        'Matariki',
-        'Labour Day',
-        'Christmas Day',
-        'Boxing Day',
-        'Cyclone Gabrielle',
-        'Auckland Floods',
-        'Covid Lockdown',
-        'New Wellington Highway',
-        'Fieldays',
-        'FIFA Womens World Cup'
-    ],
-    index=None,
-    placeholder="Select an event to filter",
-    accept_new_options=False,
-    disabled=st.session_state.event_filter
-)
+# highway_select = st.selectbox(
+#     "Filtered event",
+#     [
+#         'New Years Day',
+#         'Day After New Years Day',
+#         'Waitangi',
+#         'Good Friday',
+#         'Anzac Day',
+#         'Kings Official Birthday',
+#         'Matariki',
+#         'Labour Day',
+#         'Christmas Day',
+#         'Boxing Day',
+#         'Cyclone Gabrielle',
+#         'Auckland Floods',
+#         'Covid Lockdown',
+#         'New Wellington Highway',
+#         'Fieldays',
+#         'FIFA Womens World Cup'
+#     ],
+#     index=None,
+#     placeholder="Select an event to filter",
+#     accept_new_options=False,
+#     disabled=st.session_state.event_filter
+# )
 
 event_col1, event_col2, event_col3 = st.columns([1, 1, 3])
 
-with event_col1:
-    if st.button('Previous Day', disabled=st.session_state.event_filter):
-        pass
+# with event_col1:
+#     if st.button('Previous Day', disabled=st.session_state.event_filter):
+#         pass
 
-with event_col2:
-    if st.button('Next Day', disabled=st.session_state.event_filter):
-        pass
+# with event_col2:
+#     if st.button('Next Day', disabled=st.session_state.event_filter):
+#         pass
 
-st.markdown('##')
+# st.markdown('##')
 
 
 start_time = st.slider(
@@ -306,7 +306,7 @@ st_folium(connections_map, feature_group_to_add=highway_features, height=900, wi
 
 if st.button('Reload Data'):
     del st.session_state['node_data']
-    date_range = pd.read_csv('./streamlit_nodes.csv', low_memory=False)
+    date_range = pd.read_csv('../data/streamlit_nodes.csv', low_memory=False)
     st.session_state['node_data'] = date_range
 
 
