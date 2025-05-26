@@ -4,4 +4,4 @@ geopandas
 numpy
 folium
 streamlit_folium
-sklearn
+scikit-learn
